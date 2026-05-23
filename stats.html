@@ -8,33 +8,38 @@
 
 <div class="container">
 
+  <div class="top-bar">
+    <a href="index.html"><button class="btn mint">← Back</button></a>
+    <a href="logs.html"><button class="btn freesia">View Logs</button></a>
+  </div>
+
   <h1>📊 Stats</h1>
 
   <div class="stats-grid">
 
-    <div class="stat-card gold">
+    <div class="stat-card blue">
       <h2 id="totalSessions">0</h2>
-      <p>Total Sessions</p>
+      <p>Sessions</p>
     </div>
 
-    <div class="stat-card bluegreen">
+    <div class="stat-card pink">
       <h2 id="totalTime">0</h2>
       <p>Total Time</p>
     </div>
 
-    <div class="stat-card pink">
+    <div class="stat-card freesia">
       <h2 id="avgDuration">0</h2>
-      <p>Average Duration</p>
+      <p>Avg Duration</p>
     </div>
 
-    <div class="stat-card babyblue">
+    <div class="stat-card mint">
       <h2 id="avgTemp">0</h2>
-      <p>Average Water Temp</p>
+      <p>Avg Temp</p>
     </div>
 
-    <div class="stat-card gold">
+    <div class="stat-card blue">
       <h2 id="coldest">0</h2>
-      <p>Coldest Plunge</p>
+      <p>Coldest</p>
     </div>
 
   </div>
@@ -42,25 +47,17 @@
 </div>
 
 <script>
-const plunges = JSON.parse(localStorage.getItem("plunges")) || [];
+const data = JSON.parse(localStorage.getItem("plunges")) || [];
 
-const totalSessions = plunges.length;
-
-const totalTime = plunges.reduce((sum, p) => sum + Number(p.duration || 0), 0);
-
-const avgDuration = totalSessions ? (totalTime / totalSessions).toFixed(1) : 0;
-
-const avgTemp = totalSessions
-  ? (plunges.reduce((sum, p) => sum + Number(p.waterTemp || 0), 0) / totalSessions).toFixed(1)
-  : 0;
-
-const coldest = totalSessions
-  ? Math.min(...plunges.map(p => Number(p.waterTemp || 0)))
-  : 0;
+const totalSessions = data.length;
+const totalTime = data.reduce((s,p)=>s+Number(p.duration||0),0);
+const avgDuration = totalSessions ? (totalTime/totalSessions).toFixed(1) : 0;
+const avgTemp = totalSessions ? (data.reduce((s,p)=>s+Number(p.waterTemp||0),0)/totalSessions).toFixed(1) : 0;
+const coldest = totalSessions ? Math.min(...data.map(p=>Number(p.waterTemp||0))) : 0;
 
 document.getElementById("totalSessions").innerText = totalSessions;
-document.getElementById("totalTime").innerText = totalTime + " min";
-document.getElementById("avgDuration").innerText = avgDuration + " min";
+document.getElementById("totalTime").innerText = totalTime + "m";
+document.getElementById("avgDuration").innerText = avgDuration + "m";
 document.getElementById("avgTemp").innerText = avgTemp + "°C";
 document.getElementById("coldest").innerText = coldest + "°C";
 </script>
