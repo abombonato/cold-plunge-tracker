@@ -1,109 +1,82 @@
 :root {
-  --gold: #fed43f;
-  --bluegreen: #2bb8b3;
-  --pink: #e151af;
-  --babyblue: #bed7d8;
+  --blue: #58abe5;
+  --pink: #ff7fad;
+  --freesia: #f6c324;
+  --mint: #a9fed8;
   --dark: #0f172a;
 }
 
 body {
-  font-family: "Square Seffir", Arial, sans-serif;
-  background: var(--babyblue);
+  font-family: Arial, sans-serif;
+  background: var(--mint);
   margin: 0;
-  padding: 0;
   color: var(--dark);
 }
 
 .container {
   max-width: 700px;
   margin: auto;
-  padding: 24px;
+  padding: 20px;
 }
 
 h1 {
   text-align: center;
 }
 
-/* CARDS */
-.card {
-  background: white;
-  padding: 24px;
-  border-radius: 20px;
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
 }
 
-/* BUTTONS */
+/* buttons */
 .btn {
-  padding: 12px 18px;
-  border-radius: 12px;
+  padding: 10px 14px;
   border: none;
+  border-radius: 10px;
   cursor: pointer;
 }
 
-.gold { background: var(--gold); }
-.bluegreen { background: var(--bluegreen); color: white; }
-.pink { background: var(--pink); color: white; }
+.blue { background: var(--blue); }
+.pink { background: var(--pink); }
+.freesia { background: var(--freesia); }
+.mint { background: var(--mint); }
 
-.full {
-  width: 100%;
-  margin-top: 20px;
+/* cards */
+.card, .log-card, .stat-card {
+  background: white;
+  padding: 16px;
+  border-radius: 14px;
+  margin-bottom: 10px;
 }
 
-/* HOME */
-.home-buttons {
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-}
-
-/* FORM */
-.field {
-  margin-bottom: 16px;
-}
-
-label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: bold;
-}
-
-input, textarea {
-  width: 100%;
-  padding: 10px;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-}
-
-/* GRID BUTTONS */
+/* grid */
 .grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+/* mood buttons */
+.mood, .diff {
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: white;
+}
+
+.mood.active, .diff.active {
+  background: var(--blue);
+  color: white;
+}
+
+.stats-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
 }
 
-.mood, .diff {
-  padding: 10px;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  background: white;
-  cursor: pointer;
-}
-
-.mood.active, .diff.active {
-  background: var(--bluegreen);
-  color: white;
-  border: none;
-}
-
-/* STATS */
-.stats-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
-
-.stat-card {
-  background: white;
-  padding: 20px;
-  border-radius: 16px;
-  text-align: center;
+.full {
+  width: 100%;
+  margin-top: 10px;
 }
