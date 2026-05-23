@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Logs</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+  <div class="top-bar">
+    <a href="stats.html"><button class="btn mint">← Back</button></a>
+  </div>
+
+  <h1>📒 Logs</h1>
+
+  <div id="logList"></div>
+
+</div>
+
+<script>
+const data = JSON.parse(localStorage.getItem("plunges")) || [];
+
+const container = document.getElementById("logList");
+
+container.innerHTML = data.reverse().map(p => `
+  <div class="log-card">
+    <h3>${p.date || "No date"}</h3>
+    <p>Duration: ${p.duration} min</p>
+    <p>Water: ${p.waterTemp}°C</p>
+    <p>Before: ${p.beforeMood}</p>
+    <p>After: ${p.afterMood}</p>
+    <p>Difficulty: ${p.difficulty}</p>
+  </div>
+`).join("");
+</script>
+
+</body>
+</html>
