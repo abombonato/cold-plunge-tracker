@@ -5,21 +5,22 @@
   --mint: #a9fed8;
 }
 
+/* GLOBAL */
 body {
   font-family: Arial, sans-serif;
   background: var(--blue);
   margin: 0;
-  color: white; /* ALL TITLES WHITE EFFECT */
+  color: white;
 }
 
-/* container */
+/* CONTAINER */
 .container {
   max-width: 700px;
   margin: auto;
   padding: 20px;
 }
 
-/* HOME CENTER */
+/* HOME PAGE CENTER */
 .home {
   height: 100vh;
   display: flex;
@@ -28,25 +29,15 @@ body {
   align-items: center;
 }
 
-/* TITLE */
+/* TITLE (ONLY WHITE TITLE AS REQUESTED) */
 h1 {
   text-align: center;
   color: white;
   font-size: 34px;
-}
-/* default labels = black everywhere */
-label {
-  margin-bottom: 6px;
-  color: black;
-  /* BUT keep homepage + other pages readable on blue background if needed */
-body {
-  font-family: Arial, sans-serif;
-  background: var(--blue);
-  margin: 0;
-  color: white;
+  margin-bottom: 20px;
 }
 
-/* buttons */
+/* BUTTONS */
 .btn {
   padding: 10px 14px;
   border: none;
@@ -61,13 +52,40 @@ body {
 }
 
 /* COLORS */
-.blue { background: var(--blue); }
-.pink { background: var(--pink); }
-.freesia { background: var(--freesia); }
-.mint { background: var(--mint); }
+.blue {
+  background: var(--blue);
+}
 
-/* cards */
-.card, .stat-card {
+.pink {
+  background: var(--pink);
+}
+
+.freesia {
+  background: var(--freesia);
+}
+
+.mint {
+  background: var(--mint);
+}
+
+/* FORM LABELS (FIX: BLACK ONLY HERE) */
+label {
+  display: block;
+  margin-bottom: 6px;
+  color: black;
+}
+
+/* INPUTS */
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+
+/* LOG CARD (PINK LIGHT BACKGROUND) */
+.card {
   background: #ffd1e6;
   padding: 16px;
   border-radius: 14px;
@@ -75,46 +93,53 @@ body {
   color: black;
 }
 
-/* form layout */
-.field {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 14px;
+/* STATS CARDS */
+.stat-card {
+  background: white;
+  padding: 16px;
+  border-radius: 14px;
+  margin-bottom: 10px;
+  color: black;
 }
 
-label {
-  margin-bottom: 6px;
-  color: white;
-}
-
-/* grid */
+/* GRID (MOOD + DIFFICULTY) */
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 8px;
 }
 
-/* mood */
+/* MOOD + DIFFICULTY BUTTONS */
 .mood, .diff {
   padding: 8px;
   border-radius: 8px;
   border: 1px solid #ccc;
   background: white;
+  cursor: pointer;
 }
 
+/* SELECTED STATE */
 .mood.active, .diff.active {
   background: var(--freesia);
 }
 
-/* stats */
+/* STATS GRID */
 .stats-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
 }
 
-/* full button */
+/* FULL BUTTON */
 .full {
   width: 100%;
   margin-top: 10px;
+}
+
+/* HOME BUTTON LAYOUT */
+.home-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
 }
