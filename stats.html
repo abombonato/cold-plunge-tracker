@@ -1,16 +1,39 @@
 <!DOCTYPE html>
-    <div class="stat-card">
+<html>
+<head>
+  <title>Stats</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+  <h1>📊 Stats</h1>
+
+  <div class="stats-grid">
+
+    <div class="stat-card gold">
+      <h2 id="totalSessions">0</h2>
+      <p>Total Sessions</p>
+    </div>
+
+    <div class="stat-card bluegreen">
+      <h2 id="totalTime">0</h2>
+      <p>Total Time</p>
+    </div>
+
+    <div class="stat-card pink">
       <h2 id="avgDuration">0</h2>
-      <p>Average Duration</p>
+      <p>Avg Duration</p>
     </div>
 
-    <div class="stat-card">
-      <h2 id="avgTemp">0°C</h2>
-      <p>Average Water Temperature</p>
+    <div class="stat-card babyblue">
+      <h2 id="avgTemp">0</h2>
+      <p>Avg Water Temp</p>
     </div>
 
-    <div class="stat-card">
-      <h2 id="coldestPlunge">0°C</h2>
+    <div class="stat-card gold">
+      <h2 id="coldestPlunge">0</h2>
       <p>Coldest Plunge</p>
     </div>
 
@@ -18,38 +41,6 @@
 
 </div>
 
-<script>
-const plunges = JSON.parse(localStorage.getItem('plunges')) || [];
-
-const totalSessions = plunges.length;
-
-const totalTime = plunges.reduce((sum, p) => {
-  return sum + Number(p.duration || 0);
-}, 0);
-
-const avgDuration = totalSessions
-  ? (totalTime / totalSessions).toFixed(1)
-  : 0;
-
-const avgTemp = totalSessions
-  ? (
-      plunges.reduce((sum, p) => {
-        return sum + Number(p.waterTemp || 0);
-      }, 0) / totalSessions
-    ).toFixed(1)
-  : 0;
-
-const coldestPlunge = totalSessions
-  ? Math.min(...plunges.map(p => Number(p.waterTemp || 0)))
-  : 0;
-
-
-document.getElementById('totalSessions').innerText = totalSessions;
-document.getElementById('totalTime').innerText = totalTime + ' min';
-document.getElementById('avgDuration').innerText = avgDuration + ' min';
-document.getElementById('avgTemp').innerText = avgTemp + '°C';
-document.getElementById('coldestPlunge').innerText = coldestPlunge + '°C';
-</script>
-
+<script src="app.js"></script>
 </body>
 </html>
