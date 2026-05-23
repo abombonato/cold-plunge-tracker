@@ -1,62 +1,86 @@
 :root {
-input, textarea {
-  width: 100%;
-  padding: 12px;
-  border-radius: 12px;
-  border: 1px solid #ccc;
+  --gold: #fed43f;
+  --bluegreen: #2bb8b3;
+  --pink: #e151af;
+  --babyblue: #bed7d8;
+  --dark: #0f172a;
 }
 
-textarea {
-  min-height: 90px;
+body {
+  font-family: "Square Seffir", Arial, sans-serif;
+  background: var(--babyblue);
+  margin: 0;
+  padding: 0;
+  color: var(--dark);
 }
 
-/* Buttons */
+.container {
+  max-width: 700px;
+  margin: auto;
+  padding: 24px;
+}
+
+h1 {
+  text-align: center;
+}
+
+/* CARDS */
+.card {
+  background: white;
+  padding: 24px;
+  border-radius: 20px;
+}
+
+/* BUTTONS */
 .btn {
   padding: 12px 18px;
   border-radius: 12px;
   border: none;
   cursor: pointer;
-  font-size: 16px;
 }
 
 .gold { background: var(--gold); }
 .bluegreen { background: var(--bluegreen); color: white; }
 .pink { background: var(--pink); color: white; }
-.babyblue { background: var(--babyblue); }
 
 .full {
   width: 100%;
   margin-top: 20px;
 }
 
+/* HOME */
 .home-buttons {
   display: flex;
   gap: 12px;
   justify-content: center;
 }
 
-.stats-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
+/* FORM */
+.field {
+  margin-bottom: 16px;
 }
 
-.stat-card {
-  padding: 20px;
-  border-radius: 16px;
-  text-align: center;
-  background: white;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
 }
 
-/* Mood + Difficulty grids */
-.mood-grid, .difficulty-grid {
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+/* GRID BUTTONS */
+.grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
 }
 
-.mood-btn, .diff-btn {
+.mood, .diff {
   padding: 10px;
   border-radius: 10px;
   border: 1px solid #ccc;
@@ -64,8 +88,22 @@ textarea {
   cursor: pointer;
 }
 
-.mood-btn.active, .diff-btn.active {
+.mood.active, .diff.active {
   background: var(--bluegreen);
   color: white;
   border: none;
+}
+
+/* STATS */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.stat-card {
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  text-align: center;
 }
