@@ -9,17 +9,30 @@ body {
   font-family: Arial, sans-serif;
   background: var(--blue);
   margin: 0;
-  color: #0f172a;
+  color: white; /* ALL TITLES WHITE EFFECT */
 }
 
+/* container */
 .container {
   max-width: 700px;
   margin: auto;
   padding: 20px;
 }
 
+/* HOME CENTER */
+.home {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* TITLE */
 h1 {
   text-align: center;
+  color: white;
+  font-size: 34px;
 }
 
 /* buttons */
@@ -30,6 +43,13 @@ h1 {
   cursor: pointer;
 }
 
+/* BIG HOME BUTTONS */
+.big {
+  padding: 18px 26px;
+  font-size: 18px;
+}
+
+/* COLORS */
 .blue { background: var(--blue); }
 .pink { background: var(--pink); }
 .freesia { background: var(--freesia); }
@@ -41,15 +61,29 @@ h1 {
   padding: 16px;
   border-radius: 14px;
   margin-bottom: 10px;
+  color: black;
 }
 
-/* grids */
+/* form layout */
+.field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 14px;
+}
+
+label {
+  margin-bottom: 6px;
+  color: white;
+}
+
+/* grid */
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 8px;
 }
 
+/* mood */
 .mood, .diff {
   padding: 8px;
   border-radius: 8px;
@@ -68,6 +102,7 @@ h1 {
   gap: 10px;
 }
 
+/* full button */
 .full {
   width: 100%;
   margin-top: 10px;
