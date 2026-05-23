@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<div class="container">
+
+  <h1>🧊 Log Session</h1>
+
+  <div class="card">
+
+    <form id="plungeForm">
+
+      <label>Date</label>
+      <input type="date" id="date" required>
+
+      <label>Duration (minutes)</label>
+      <input type="number" id="duration" required>
+
+      <label>Location</label>
+      <input type="text" id="location">
+
+      <label>Water Temperature (°C)</label>
+      <input type="number" id="waterTemp">
+
+      <label>Outside Temperature (°C)</label>
+      <input type="number" id="outsideTemp">
+
+      <label>Cycle Phase</label>
+      <input type="text" id="cyclePhase">
+
+      <label>Notes</label>
+      <textarea id="notes"></textarea>
+
+      <label>How I Feel Before</label>
+      <div class="emoji-group">
+        <label><input type="radio" name="beforeFeeling" value="Anxious"> 😰 Anxious</label>
+        <label><input type="radio" name="beforeFeeling" value="Tired"> 😴 Tired</label>
+        <label><input type="radio" name="beforeFeeling" value="Energized"> ⚡ Energized</label>
+        <label><input type="radio" name="beforeFeeling" value="Neutral"> 😐 Neutral</label>
+        <label><input type="radio" name="beforeFeeling" value="Sad"> 😢 Sad</label>
+        <label><input type="radio" name="beforeFeeling" value="Happy"> 😊 Happy</label>
+      </div>
+
+      <label>How I Feel After</label>
+      <div class="emoji-group">
+        <label><input type="radio" name="afterFeeling" value="Calm"> 😌 Calm</label>
+        <label><input type="radio" name="afterFeeling" value="Alert"> 👀 Alert</label>
+        <label><input type="radio" name="afterFeeling" value="Euphoric"> 🤩 Euphoric</label>
+        <label><input type="radio" name="afterFeeling" value="Still Cold"> 🥶 Still Cold</label>
+      </div>
+
+      <label>Perceived Difficulty</label>
+      <select id="difficulty">
+        <option value="Easy">Easy</option>
+        <option value="Medium">Medium</option>
+        <option value="Hard">Hard</option>
+      </select>
+
+      <button type="submit">Save Session</button>
+
+    </form>
+
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
