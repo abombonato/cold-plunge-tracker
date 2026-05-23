@@ -1,60 +1,59 @@
 <!DOCTYPE html>
-
-<div class="container">
-
-  <h1>🧊 Log Session</h1>
-
-  <div class="card">
-
-    <form id="plungeForm">
-
-      <label>Date</label>
-      <input type="date" id="date" required>
-
-      <label>Duration (minutes)</label>
-      <input type="number" id="duration" required>
-
-      <label>Location</label>
-      <input type="text" id="location">
-
-      <label>Water Temperature (°C)</label>
-      <input type="number" id="waterTemp">
-
-      <label>Outside Temperature (°C)</label>
-      <input type="number" id="outsideTemp">
-
-      <label>Cycle Phase</label>
-      <input type="text" id="cyclePhase">
-
-      <label>Notes</label>
-      <textarea id="notes"></textarea>
-
-      <label>How I Feel Before</label>
-      <div class="emoji-group">
-        <label><input type="radio" name="beforeFeeling" value="Anxious"> 😰 Anxious</label>
-        <label><input type="radio" name="beforeFeeling" value="Tired"> 😴 Tired</label>
-        <label><input type="radio" name="beforeFeeling" value="Energized"> ⚡ Energized</label>
-        <label><input type="radio" name="beforeFeeling" value="Neutral"> 😐 Neutral</label>
-        <label><input type="radio" name="beforeFeeling" value="Sad"> 😢 Sad</label>
-        <label><input type="radio" name="beforeFeeling" value="Happy"> 😊 Happy</label>
+        <input type="text" id="location">
       </div>
 
-      <label>How I Feel After</label>
-      <div class="emoji-group">
-        <label><input type="radio" name="afterFeeling" value="Calm"> 😌 Calm</label>
-        <label><input type="radio" name="afterFeeling" value="Alert"> 👀 Alert</label>
-        <label><input type="radio" name="afterFeeling" value="Euphoric"> 🤩 Euphoric</label>
-        <label><input type="radio" name="afterFeeling" value="Still Cold"> 🥶 Still Cold</label>
+      <div class="field">
+        <label>Water Temperature (°C)</label>
+        <input type="number" id="waterTemp">
       </div>
 
-      <label>Perceived Difficulty</label>
-      <select id="difficulty">
-        <option value="Easy">Easy</option>
-        <option value="Medium">Medium</option>
-        <option value="Hard">Hard</option>
-      </select>
+      <div class="field">
+        <label>Outside Temperature (°C)</label>
+        <input type="number" id="outsideTemp">
+      </div>
 
-      <button type="submit">Save Session</button>
+      <div class="field">
+        <label>Cycle Phase</label>
+        <input type="text" id="cyclePhase">
+      </div>
+
+      <div class="field">
+        <label>Notes</label>
+        <textarea id="notes"></textarea>
+      </div>
+
+      <div class="field">
+        <label>How I Feel Before</label>
+        <div class="mood-grid">
+          <button type="button" class="mood-btn" data-value="Anxious">😰 Anxious</button>
+          <button type="button" class="mood-btn" data-value="Tired">😴 Tired</button>
+          <button type="button" class="mood-btn" data-value="Energized">⚡ Energized</button>
+          <button type="button" class="mood-btn" data-value="Neutral">😐 Neutral</button>
+          <button type="button" class="mood-btn" data-value="Sad">😢 Sad</button>
+          <button type="button" class="mood-btn" data-value="Happy">😊 Happy</button>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>How I Feel After</label>
+        <div class="mood-grid">
+          <button type="button" class="mood-btn" data-value="Calm">😌 Calm</button>
+          <button type="button" class="mood-btn" data-value="Alert">👀 Alert</button>
+          <button type="button" class="mood-btn" data-value="Euphoric">🤩 Euphoric</button>
+          <button type="button" class="mood-btn" data-value="Still Cold">🥶 Still Cold</button>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Perceived Difficulty</label>
+        <div class="difficulty-grid">
+          <button type="button" class="diff-btn" data-value="Easy">Easy</button>
+          <button type="button" class="diff-btn" data-value="Medium">Medium</button>
+          <button type="button" class="diff-btn" data-value="Hard">Hard</button>
+        </div>
+      </div>
+
+      <button type="submit" class="btn gold full">Save Session</button>
 
     </form>
 
