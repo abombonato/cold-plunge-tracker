@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+    <div class="stat-card">
+      <h2 id="avgDuration">0</h2>
+      <p>Average Duration</p>
+    </div>
+
+    <div class="stat-card">
+      <h2 id="avgTemp">0°C</h2>
+      <p>Average Water Temperature</p>
+    </div>
+
+    <div class="stat-card">
+      <h2 id="coldestPlunge">0°C</h2>
+      <p>Coldest Plunge</p>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+const plunges = JSON.parse(localStorage.getItem('plunges')) || [];
+
+const totalSessions = plunges.length;
+
+const totalTime = plunges.reduce((sum, p) => {
+  return sum + Number(p.duration || 0);
+}, 0);
+
+const avgDuration = totalSessions
+  ? (totalTime / totalSessions).toFixed(1)
+  : 0;
+
+const avgTemp = totalSessions
+  ? (
+      plunges.reduce((sum, p) => {
+        return sum + Number(p.waterTemp || 0);
+      }, 0) / totalSessions
+    ).toFixed(1)
+  : 0;
+
+const coldestPlunge = totalSessions
+  ? Math.min(...plunges.map(p => Number(p.waterTemp || 0)))
+  : 0;
+
+
+document.getElementById('totalSessions').innerText = totalSessions;
+document.getElementById('totalTime').innerText = totalTime + ' min';
+document.getElementById('avgDuration').innerText = avgDuration + ' min';
+document.getElementById('avgTemp').innerText = avgTemp + '°C';
+document.getElementById('coldestPlunge').innerText = coldestPlunge + '°C';
+</script>
+
+</body>
+</html>
