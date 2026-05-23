@@ -1,54 +1,62 @@
-let selectedBefore = "";
-let selectedAfter = "";
-let selectedDifficulty = "";
+let beforeMood = "";
+let afterMood = "";
+let difficulty = "";
 
-// Mood selection
-function setupButtons(selector, onSelect) {
-  document.querySelectorAll(selector).forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll(selector).forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      onSelect(btn.dataset.value);
-    });
+// handle mood + difficulty buttons
+document.querySelectorAll(".mood, .diff").forEach(btn => {
+  btn.addEventListener("click", () => {
+
+    const value = btn.dataset.value;
+    const type = btn.classList.contains("mood") ? "mood" : "diff";
+
+    if (type === "diff") {
+      difficulty = value;
+      document.querySelectorAll(".diff").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+    } else {
+
+      const group = btn.closest(".field").querySelectorAll(".mood");
+
+      group.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      if (btn.parentElement.previousElementSibling.textContent.includes("before")) {
+        beforeMood = value;
+      } else {
+        afterMood = value;
+      }
+    }
   });
-}
-
-setupButtons('.mood-btn', (val) => {
-  if (event.target.closest('[data-value]').parentElement.previousElementSibling.textContent.includes('Before')) {
-    selectedBefore = val;
-  } else {
-    selectedAfter = val;
-  }
 });
 
-setupButtons('.diff-btn', (val) => {
-  selectedDifficulty = val;
-});
-
-const form = document.getElementById('plungeForm');
+const form = document.getElementById("plungeForm");
 
 if (form) {
-  form.addEventListener('submit', e => {
+  form.addEventListener("submit", e => {
     e.preventDefault();
 
-    const plunges = JSON.parse(localStorage.getItem('plunges')) || [];
+    const plunges = JSON.parse(localStorage.getItem("plunges")) || [];
 
     plunges.push({
-      date: document.getElementById('date').value,
-      duration: document.getElementById('duration').value,
-      location: document.getElementById('location').value,
-      waterTemp: document.getElementById('waterTemp').value,
-      outsideTemp: document.getElementById('outsideTemp').value,
-      cyclePhase: document.getElementById('cyclePhase').value,
-      notes: document.getElementById('notes').value,
-      beforeFeeling: selectedBefore,
-      afterFeeling: selectedAfter,
-      difficulty: selectedDifficulty
+      date: document.getElementById("date").value,
+      duration: document.getElementById("duration").value,
+      location: document.getElementById("location").value,
+      waterTemp: document.getElementById("waterTemp").value,
+      outsideTemp: document.getElementById("outsideTemp").value,
+      cyclePhase: document.getElementById("cyclePhase").value,
+      notes: document.getElementById("notes").value,
+      beforeMood,
+      afterMood,
+      difficulty
     });
 
-    localStorage.setItem('plunges', JSON.stringify(plunges));
+    localStorage.setItem("plunges", JSON.stringify(plunges));
 
-    alert('Session saved!');
+    alert("Saved!");
     form.reset();
+
+    beforeMood = "";
+    afterMood = "";
+    difficulty = "";
   });
 }
