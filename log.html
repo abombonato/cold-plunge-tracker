@@ -1,96 +1,69 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Log Session</title>
+  <title>Stats</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="container">
 
-  <h1>🧊 Log Session</h1>
+  <h1>📊 Stats</h1>
 
-  <div class="card">
+  <div class="stats-grid">
 
-    <form id="plungeForm">
+    <div class="stat-card gold">
+      <h2 id="totalSessions">0</h2>
+      <p>Total Sessions</p>
+    </div>
 
-      <div class="field">
-        <label>Date</label>
-        <input type="date" id="date" required>
-      </div>
+    <div class="stat-card bluegreen">
+      <h2 id="totalTime">0</h2>
+      <p>Total Time</p>
+    </div>
 
-      <div class="field">
-        <label>Duration (minutes)</label>
-        <input type="number" id="duration" required>
-      </div>
+    <div class="stat-card pink">
+      <h2 id="avgDuration">0</h2>
+      <p>Average Duration</p>
+    </div>
 
-      <div class="field">
-        <label>Location</label>
-        <input type="text" id="location">
-      </div>
+    <div class="stat-card babyblue">
+      <h2 id="avgTemp">0</h2>
+      <p>Average Water Temp</p>
+    </div>
 
-      <div class="field">
-        <label>Water Temperature (°C)</label>
-        <input type="number" id="waterTemp">
-      </div>
-
-      <div class="field">
-        <label>Outside Temperature (°C)</label>
-        <input type="number" id="outsideTemp">
-      </div>
-
-      <div class="field">
-        <label>Cycle Phase</label>
-        <input type="text" id="cyclePhase">
-      </div>
-
-      <div class="field">
-        <label>Notes</label>
-        <textarea id="notes"></textarea>
-      </div>
-
-      <!-- BEFORE MOOD -->
-      <div class="field">
-        <label>How I feel before</label>
-        <div class="grid">
-          <button type="button" class="mood" data-type="before" data-value="Anxious">😰 Anxious</button>
-          <button type="button" class="mood" data-type="before" data-value="Tired">😴 Tired</button>
-          <button type="button" class="mood" data-type="before" data-value="Energized">⚡ Energized</button>
-          <button type="button" class="mood" data-type="before" data-value="Neutral">😐 Neutral</button>
-          <button type="button" class="mood" data-type="before" data-value="Sad">😢 Sad</button>
-          <button type="button" class="mood" data-type="before" data-value="Happy">😊 Happy</button>
-        </div>
-      </div>
-
-      <!-- AFTER MOOD -->
-      <div class="field">
-        <label>How I feel after</label>
-        <div class="grid">
-          <button type="button" class="mood" data-type="after" data-value="Calm">😌 Calm</button>
-          <button type="button" class="mood" data-type="after" data-value="Alert">👀 Alert</button>
-          <button type="button" class="mood" data-type="after" data-value="Euphoric">🤩 Euphoric</button>
-          <button type="button" class="mood" data-type="after" data-value="Still Cold">🥶 Still Cold</button>
-        </div>
-      </div>
-
-      <!-- DIFFICULTY -->
-      <div class="field">
-        <label>Perceived difficulty</label>
-        <div class="grid">
-          <button type="button" class="diff" data-value="Easy">Easy</button>
-          <button type="button" class="diff" data-value="Medium">Medium</button>
-          <button type="button" class="diff" data-value="Hard">Hard</button>
-        </div>
-      </div>
-
-      <button type="submit" class="btn gold full">Save Session</button>
-
-    </form>
+    <div class="stat-card gold">
+      <h2 id="coldest">0</h2>
+      <p>Coldest Plunge</p>
+    </div>
 
   </div>
 
 </div>
 
-<script src="app.js"></script>
+<script>
+const plunges = JSON.parse(localStorage.getItem("plunges")) || [];
+
+const totalSessions = plunges.length;
+
+const totalTime = plunges.reduce((sum, p) => sum + Number(p.duration || 0), 0);
+
+const avgDuration = totalSessions ? (totalTime / totalSessions).toFixed(1) : 0;
+
+const avgTemp = totalSessions
+  ? (plunges.reduce((sum, p) => sum + Number(p.waterTemp || 0), 0) / totalSessions).toFixed(1)
+  : 0;
+
+const coldest = totalSessions
+  ? Math.min(...plunges.map(p => Number(p.waterTemp || 0)))
+  : 0;
+
+document.getElementById("totalSessions").innerText = totalSessions;
+document.getElementById("totalTime").innerText = totalTime + " min";
+document.getElementById("avgDuration").innerText = avgDuration + " min";
+document.getElementById("avgTemp").innerText = avgTemp + "°C";
+document.getElementById("coldest").innerText = coldest + "°C";
+</script>
+
 </body>
 </html>
