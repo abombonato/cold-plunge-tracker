@@ -57,7 +57,7 @@ h1 {
 .freesia { background: var(--freesia); }
 .mint { background: var(--mint); }
 
-/* 🔥 FIX 2: HOME BUTTONS BACK TO HORIZONTAL */
+/* HOME BUTTONS (HORIZONTAL) */
 .home-buttons {
   display: flex;
   flex-direction: row;
@@ -68,48 +68,46 @@ h1 {
 /* FORM LABELS */
 label {
   display: block;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
   color: black;
+  font-size: 13px;
 }
 
-/* INPUTS (REDUCED SIZE = FIX 1) */
+/* 🔥 FIXED INPUT SIZE (LESS BLOCKY) */
 input, textarea {
   width: 100%;
-  padding: 8px;         /* smaller than before */
-  border-radius: 10px;
+  padding: 6px;
+  border-radius: 8px;
   border: 1px solid #ccc;
-  margin-bottom: 8px;   /* tighter spacing */
-  font-size: 14px;
+  margin-bottom: 6px;
+  font-size: 13px;
 }
 
-/* LOG CARD (PINK BLOCK STAYS SAME SIZE) */
+/* 🔥 FIXED FIELD SPACING */
+.field {
+  margin-bottom: 10px;
+}
+
+/* PINK CARD (UNCHANGED SIZE, JUST CONTAINER) */
 .card {
   background: #ffd1e6;
-  padding: 12px;        /* reduced so it doesn't overflow visually */
+  padding: 12px;
   border-radius: 14px;
   margin-bottom: 10px;
   color: black;
 }
 
-/* STATS CARDS */
-.stat-card {
-  background: white;
-  padding: 16px;
-  border-radius: 14px;
-  margin-bottom: 10px;
-  color: black;
-}
-
-/* GRID */
+/* GRID (MOOD + DIFFICULTY) */
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
+  gap: 6px;
 }
 
 /* BUTTONS INSIDE GRID */
 .mood, .diff {
-  padding: 8px;
+  padding: 6px;
+  font-size: 12px;
   border-radius: 8px;
   border: 1px solid #ccc;
   background: white;
@@ -126,6 +124,15 @@ input, textarea {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
+}
+
+/* STATS CARD */
+.stat-card {
+  background: white;
+  padding: 16px;
+  border-radius: 14px;
+  margin-bottom: 10px;
+  color: black;
 }
 
 /* FULL BUTTON */
