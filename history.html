@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>History</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+  <a href="index.html"><button class="btn freesia">← Back</button></a>
+
+  <h1>📒 History</h1>
+
+  <div id="historyList"></div>
+
+</div>
+
+<script>
+const data = JSON.parse(localStorage.getItem("plunges")) || [];
+
+function formatDate(dateStr) {
+  const d = new Date(dateStr);
+  const day = String(d.getDate()).padStart(2,'0');
+  const month = String(d.getMonth()+1).padStart(2,'0');
+  const year = d.getFullYear();
+  return `${day}/${month}/${year}`;
+}
+
+document.getElementById("historyList").innerHTML =
+  data.slice().reverse().map(p => `
+    <div class="card">
+      <h3>${formatDate(p.date)}</h3>
+      <p>${p.duration} min</p>
+      <p>${p.waterTemp}°C</p>
+      <p>Before: ${p.beforeMood}</p>
+      <p>After: ${p.afterMood}</p>
+      <p>Difficulty: ${p.difficulty}</p>
+    </div>
+  `).join("");
+</script>
+
+</body>
+</html>
