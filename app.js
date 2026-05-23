@@ -2,7 +2,7 @@ let beforeMood = "";
 let afterMood = "";
 let difficulty = "";
 
-// mood selection
+// mood buttons
 document.querySelectorAll(".mood").forEach(btn => {
   btn.onclick = () => {
     const type = btn.dataset.type;
