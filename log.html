@@ -8,20 +8,23 @@
 
 <div class="container">
 
+  <div class="top-bar">
+    <a href="index.html"><button class="btn mint">← Back</button></a>
+  </div>
+
   <h1>🧊 Log Session</h1>
 
   <div class="card">
-
     <form id="plungeForm">
 
       <div class="field">
         <label>Date</label>
-        <input type="date" id="date" required>
+        <input type="date" id="date">
       </div>
 
       <div class="field">
-        <label>Duration (minutes)</label>
-        <input type="number" id="duration" required>
+        <label>Duration (min)</label>
+        <input type="number" id="duration">
       </div>
 
       <div class="field">
@@ -30,12 +33,12 @@
       </div>
 
       <div class="field">
-        <label>Water Temperature (°C)</label>
+        <label>Water Temp</label>
         <input type="number" id="waterTemp">
       </div>
 
       <div class="field">
-        <label>Outside Temperature (°C)</label>
+        <label>Outside Temp</label>
         <input type="number" id="outsideTemp">
       </div>
 
@@ -49,33 +52,33 @@
         <textarea id="notes"></textarea>
       </div>
 
-      <!-- BEFORE MOOD -->
+      <!-- BEFORE -->
       <div class="field">
-        <label>How I feel before</label>
+        <label>Before</label>
         <div class="grid">
-          <button type="button" class="mood" data-type="before" data-value="Anxious">😰 Anxious</button>
-          <button type="button" class="mood" data-type="before" data-value="Tired">😴 Tired</button>
-          <button type="button" class="mood" data-type="before" data-value="Energized">⚡ Energized</button>
-          <button type="button" class="mood" data-type="before" data-value="Neutral">😐 Neutral</button>
-          <button type="button" class="mood" data-type="before" data-value="Sad">😢 Sad</button>
-          <button type="button" class="mood" data-type="before" data-value="Happy">😊 Happy</button>
+          <button type="button" class="mood" data-type="before" data-value="Anxious">😰</button>
+          <button type="button" class="mood" data-type="before" data-value="Tired">😴</button>
+          <button type="button" class="mood" data-type="before" data-value="Energized">⚡</button>
+          <button type="button" class="mood" data-type="before" data-value="Neutral">😐</button>
+          <button type="button" class="mood" data-type="before" data-value="Sad">😢</button>
+          <button type="button" class="mood" data-type="before" data-value="Happy">😊</button>
         </div>
       </div>
 
-      <!-- AFTER MOOD -->
+      <!-- AFTER -->
       <div class="field">
-        <label>How I feel after</label>
+        <label>After</label>
         <div class="grid">
-          <button type="button" class="mood" data-type="after" data-value="Calm">😌 Calm</button>
-          <button type="button" class="mood" data-type="after" data-value="Alert">👀 Alert</button>
-          <button type="button" class="mood" data-type="after" data-value="Euphoric">🤩 Euphoric</button>
-          <button type="button" class="mood" data-type="after" data-value="Still Cold">🥶 Still Cold</button>
+          <button type="button" class="mood" data-type="after" data-value="Calm">😌</button>
+          <button type="button" class="mood" data-type="after" data-value="Alert">👀</button>
+          <button type="button" class="mood" data-type="after" data-value="Euphoric">🤩</button>
+          <button type="button" class="mood" data-type="after" data-value="Still Cold">🥶</button>
         </div>
       </div>
 
       <!-- DIFFICULTY -->
       <div class="field">
-        <label>Perceived difficulty</label>
+        <label>Difficulty</label>
         <div class="grid">
           <button type="button" class="diff" data-value="Easy">Easy</button>
           <button type="button" class="diff" data-value="Medium">Medium</button>
@@ -83,10 +86,9 @@
         </div>
       </div>
 
-      <button type="submit" class="btn gold full">Save Session</button>
+      <button class="btn pink full" type="submit">Save Session</button>
 
     </form>
-
   </div>
 
 </div>
