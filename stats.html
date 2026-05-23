@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Stats</title>
+  <title>Logs</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -9,57 +9,30 @@
 <div class="container">
 
   <div class="top-bar">
-    <a href="index.html"><button class="btn mint">← Back</button></a>
-    <a href="logs.html"><button class="btn freesia">View Logs</button></a>
+    <a href="stats.html"><button class="btn mint">← Back</button></a>
   </div>
 
-  <h1>📊 Stats</h1>
+  <h1>📒 Logs</h1>
 
-  <div class="stats-grid">
-
-    <div class="stat-card blue">
-      <h2 id="totalSessions">0</h2>
-      <p>Sessions</p>
-    </div>
-
-    <div class="stat-card pink">
-      <h2 id="totalTime">0</h2>
-      <p>Total Time</p>
-    </div>
-
-    <div class="stat-card freesia">
-      <h2 id="avgDuration">0</h2>
-      <p>Avg Duration</p>
-    </div>
-
-    <div class="stat-card mint">
-      <h2 id="avgTemp">0</h2>
-      <p>Avg Temp</p>
-    </div>
-
-    <div class="stat-card blue">
-      <h2 id="coldest">0</h2>
-      <p>Coldest</p>
-    </div>
-
-  </div>
+  <div id="logList"></div>
 
 </div>
 
 <script>
 const data = JSON.parse(localStorage.getItem("plunges")) || [];
 
-const totalSessions = data.length;
-const totalTime = data.reduce((s,p)=>s+Number(p.duration||0),0);
-const avgDuration = totalSessions ? (totalTime/totalSessions).toFixed(1) : 0;
-const avgTemp = totalSessions ? (data.reduce((s,p)=>s+Number(p.waterTemp||0),0)/totalSessions).toFixed(1) : 0;
-const coldest = totalSessions ? Math.min(...data.map(p=>Number(p.waterTemp||0))) : 0;
+const container = document.getElementById("logList");
 
-document.getElementById("totalSessions").innerText = totalSessions;
-document.getElementById("totalTime").innerText = totalTime + "m";
-document.getElementById("avgDuration").innerText = avgDuration + "m";
-document.getElementById("avgTemp").innerText = avgTemp + "°C";
-document.getElementById("coldest").innerText = coldest + "°C";
+container.innerHTML = data.reverse().map(p => `
+  <div class="log-card">
+    <h3>${p.date || "No date"}</h3>
+    <p>Duration: ${p.duration} min</p>
+    <p>Water: ${p.waterTemp}°C</p>
+    <p>Before: ${p.beforeMood}</p>
+    <p>After: ${p.afterMood}</p>
+    <p>Difficulty: ${p.difficulty}</p>
+  </div>
+`).join("");
 </script>
 
 </body>
